@@ -1,17 +1,11 @@
 version: "3"
 services:
-  web:
+  webserver:
     build: ./api
-    deploy:
-      replicas: 5
-      resources:
-        limits:
-          cpus: "0.1"
-          memory: 50M
-      restart_policy:
-        condition: on-failure
+    container_name: webserver
     environment:
-      API_PORT_D: $API_PORT
-      API_PING_D: $API_PING
+      WEB_PORT_D: $WEB_PORT
+      WEB_PING_D: $WEB_PING
     ports:
       - "4000:80"
+  

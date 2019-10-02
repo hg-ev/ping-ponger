@@ -1,4 +1,3 @@
-
 FROM node:latest
 
 # Set the working directory to /app
