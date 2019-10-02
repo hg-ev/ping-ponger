@@ -6,6 +6,22 @@ services:
     environment:
       WEB_PORT_D: $WEB_PORT
       WEB_PING_D: $WEB_PING
+      PG_HOST: $PG_HOST
+      PG_PORT: $PG_PORT
+      PG_DB: $PG_DB
+      PG_USER: $PG_USER
+      PG_PASS: $PG_PASS
     ports:
       - "4000:80"
-  
+    volumes:
+      - ./api:/web
+      - /web/node_modules
+  db:
+    build: ./db
+    container_name: db
+    ports:
+      - "54320:5432"
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data
+volumes:
+  my_dbdata:
